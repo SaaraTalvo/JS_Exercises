@@ -1,1 +1,1 @@
-This is for Laurea Javascript course
+This is for Laurea Javascript course.
