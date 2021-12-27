@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Workshop 2</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h1>Workshop 2: JavaScript BOM</h1>
+    <hr />
+    <p>
+      In this exercise we will practice the use of BOM. Use the lecture-material
+      as a reference guide side by side these exercises. It might also be a good
+      idea to save the lines of code you write during the exercises for later
+      use.
+    </p>
+
+    <h2>Exercise 1</h2>
+    <p>
+      Add JavaScript commands in the script-tag of this page, which will write
+      the following text on the browser page. Use HTML-tags to produce the text
+      styles to the page. <br />
+      <br />
+      <em
+        ><strong
+          >"If I had nine hours to chop down a tree, I'd spend the first six
+          sharpening my ax."</strong
+        >
+        <br />
+        -- Abraham Lincoln</em
+      >
+    </p>
+
+    <h2>Exercise 2</h2>
+    <p>
+      Create a JavaScript function called repeatingText. It writes out a line of
+      text to the page 50 times.
+    </p>
+
+    <h2>Exercise 3</h2>
+    <p>
+      Create a JavaScript if-statement, which checks if the user is using
+      Mozilla browser. If it is, the browser should load http://www.mozilla.org"
+      page. If not, the browser should load some other website. Create simple
+      pages to test the code.
+    </p>
+
+    <h2>Exercise 4</h2>
+    <p>
+      Create a simple web page, where JavaScript confirm-dialog will pop out
+      asking if the user is a student or not. If the user clicks OK write
+      "Welcome student" to the page. If the user clicks cancel, write on the
+      page: "Sorry, this page is for students only".
+    </p>
+
+    <h2>Exercise 5</h2>
+    Use document.write to output an image tag with a real image to the page.<br />
+    When you're done, try writing a JavaScript function to display a random
+    image from the following list of images. HINT: You can access individual
+    images using the table index. Images[0] for example contains the url: "<a
+      href="http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg"
+      >http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg</a
+    >".
+
+    <pre>
+			var images =[
+				"http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg", 
+				"http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", 
+				"http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg"
+			];
+		</pre
+    >
+    <!-- tehtävän neljä -->
+    <h3>Press the button?</h3>
+    <button onclick="myFunction()">Press me</button>
+
+    <!-- tehtävän 4 ja 4 ainakin -->
+
+    <p id="demo"></p>
+
+    <!-- teht5 -->
+    <img
+      src="images/"
+      width="305"
+      height="312"
+      id="myPicture"
+      alt="some image"
+    />
+
+    <script>
+      //teht 1
+      document.write(
+        '<i><b>"If I had nine hours to chop down a tree, I\'d spend the fisrt six sharpenign my ax."</b><br>--Abraham Lincoln<br></i>'
+      );
+
+      //teht 2
+
+      function repeatingText() {
+        for (let i = 0; i < 49; i++) {
+          document.write("toistan tekstiä.");
+        }
+      }
+      repeatingText();
+
+      //teht 3 jos käyttäjä käyttää mozillaa
+
+      let greeting;
+
+      if (navigator.userAgent.indexOf("Mozilla") != -1) {
+        greeting = "<br><br>Käytät mozillaa<br>";
+        // location.replace("https://www.mozilla.org/fi/")
+      } else {
+        // location.replace("https://www.opera.com/")
+      }
+
+      document.write(greeting);
+
+      //   teht 4 confirm box
+
+      function myFunction() {
+        var txt;
+        if (confirm("Are you a student?")) {
+          txt = "Welcome student!";
+        } else {
+          txt = "Sorry, this page is for students only.";
+        }
+        document.getElementById("demo").innerHTML = txt;
+      }
+
+      //tehth 5 Use document.write to output an image tag with a real image to the page.
+      document.write(
+        '<img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/bernese-mountain-dog-royalty-free-image-1581013857.jpg?crop=0.87845xw:1xh;center,top&resize=980:*" height="250">'
+      );
+
+      //teht 5
+
+      window.onload = choosePic;
+
+      //   var myPix = new Array("images/lion.jpg","images/tiger.jpg","images/bear.jpg");
+
+      var myPix = [
+        "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg",
+        "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+        "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg",
+      ];
+
+      function choosePic() {
+        var randomNum = Math.floor(Math.random() * myPix.length);
+        document.getElementById("myPicture").src = myPix[randomNum];
+      }
+    </script>
+  </body>
+</html>
